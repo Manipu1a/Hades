@@ -4,6 +4,9 @@
     <Filter Include="Hades">
       <UniqueIdentifier>{0ACC4C0D-76E0-74BE-3F62-181EAB3571EF}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Hades\Events">
+      <UniqueIdentifier>{4f2046be-b6ff-47b0-93b4-2f1a04b7742f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Hades.h" />
@@ -18,6 +21,18 @@
     </ClInclude>
     <ClInclude Include="src\Hades\Log.h">
       <Filter>Hades</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hades\Events\ApplicationEvent.h">
+      <Filter>Hades\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hades\Events\Event.h">
+      <Filter>Hades\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hades\Events\KeyEvent.h">
+      <Filter>Hades\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hades\Events\MouseEvent.h">
+      <Filter>Hades\Events</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

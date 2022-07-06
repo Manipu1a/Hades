@@ -79,7 +79,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>HADES_PLATFORM_WINDOWS;HADES_BUILD_DLL;HADES_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>vendor\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>vendor\spdlog\include;src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -143,6 +143,10 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Hades\Events\ApplicationEvent.h" />
+    <ClInclude Include="src\Hades\Events\Event.h" />
+    <ClInclude Include="src\Hades\Events\KeyEvent.h" />
+    <ClInclude Include="src\Hades\Events\MouseEvent.h" />
     <ClInclude Include="src\Hades.h" />
     <ClInclude Include="src\Hades\Application.h" />
     <ClInclude Include="src\Hades\Core.h" />
