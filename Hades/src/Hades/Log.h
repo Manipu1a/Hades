@@ -4,6 +4,7 @@
 
 #include "Core.h"
 #include "spdlog/spdlog.h"
+#include "spdlog/fmt/ostr.h"
 
 namespace Hades {
 	class HADES_API Log
@@ -31,9 +32,9 @@ namespace Hades {
 #define HADES_CORE_FATAL(...)	::Hades::Log::GetCoreLogger()->fatal(__VA_ARGS__)
 
 // Client log macros
-#define HADES_CLIENT_TRACE(...)	::Hades::Log::GetClientLogger()->trace(__VA_ARGS__)
-#define HADES_CLIENT_INFO(...)	::Hades::Log::GetClientLogger()->info(__VA_ARGS__)
-#define HADES_CLIENT_WARN(...)	::Hades::Log::GetClientLogger()->warn(__VA_ARGS__)
-#define HADES_CLIENT_ERROR(...)	::Hades::Log::GetClientLogger()->error(__VA_ARGS__)
-#define HADES_CLIENT_FATAL(...)	::Hades::Log::GetClientLogger()->fatal(__VA_ARGS__)
+#define HADES_TRACE(...)		::Hades::Log::GetClientLogger()->trace(__VA_ARGS__)
+#define HADES_INFO(...)			::Hades::Log::GetClientLogger()->info(__VA_ARGS__)
+#define HADES_WARN(...)			::Hades::Log::GetClientLogger()->warn(__VA_ARGS__)
+#define HADES_ERROR(...)		::Hades::Log::GetClientLogger()->error(__VA_ARGS__)
+#define HADES_FATAL(...)		::Hades::Log::GetClientLogger()->fatal(__VA_ARGS__)
 

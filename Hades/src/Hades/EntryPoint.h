@@ -8,7 +8,7 @@ int main(int argc, char** argv)
 {
 	Hades::Log::Init();
 	HADES_CORE_WARN("Initialized Log!");
-	HADES_CLIENT_INFO("Hello! Var={0}", 5);
+	HADES_INFO("Hello! Var={0}", 5);
 
 	auto app = Hades::CreateApplication();
 	app->Run();
