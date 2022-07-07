@@ -1,3 +1,4 @@
+#include "hdpch.h"
 #include "Application.h"
 
 #include "Hades/Events/ApplicationEvent.h"
