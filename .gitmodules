@@ -1,3 +1,6 @@
 [submodule "Hades/vendor/spdlog"]
 	path = Hades/vendor/spdlog
 	url = https://github.com/gabime/spdlog.git
+[submodule "Hades/vendor/GLFW"]
+	path = Hades/vendor/GLFW
+	url = https://github.com/Manipu1a/glfw
