@@ -7,6 +7,12 @@
     <Filter Include="Hades\Events">
       <UniqueIdentifier>{AE48771B-9AAB-06C0-4331-3F762F73D242}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Platform">
+      <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\Windows">
+      <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Hades.h" />
@@ -31,8 +37,20 @@
     <ClInclude Include="src\Hades\Events\MouseEvent.h">
       <Filter>Hades\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Hades\Layer.h">
+      <Filter>Hades</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hades\LayerStack.h">
+      <Filter>Hades</Filter>
+    </ClInclude>
     <ClInclude Include="src\Hades\Log.h">
       <Filter>Hades</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hades\Window.h">
+      <Filter>Hades</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
+      <Filter>Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\hdpch.h" />
   </ItemGroup>
@@ -40,8 +58,17 @@
     <ClCompile Include="src\Hades\Application.cpp">
       <Filter>Hades</Filter>
     </ClCompile>
+    <ClCompile Include="src\Hades\Layer.cpp">
+      <Filter>Hades</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Hades\LayerStack.cpp">
+      <Filter>Hades</Filter>
+    </ClCompile>
     <ClCompile Include="src\Hades\Log.cpp">
       <Filter>Hades</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
+      <Filter>Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\hdpch.cpp" />
   </ItemGroup>

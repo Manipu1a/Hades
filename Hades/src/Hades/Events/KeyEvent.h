@@ -41,6 +41,7 @@ namespace Hades {
 
 	class HADES_API KeyReleasedEvent : public KeyEvent
 	{
+	public:
 		KeyReleasedEvent(int keycode)
 			: KeyEvent(keycode) { }
 

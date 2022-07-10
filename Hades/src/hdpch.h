@@ -12,6 +12,8 @@
 #include <unordered_map>
 #include <unordered_set>
 
+#include "Hades/Log.h"
+
 #ifdef HADES_PLATFORM_WINDOWS
 	#include <Windows.h>
 #endif

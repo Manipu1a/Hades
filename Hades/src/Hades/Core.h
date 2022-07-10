@@ -10,4 +10,13 @@
 	#error Hades only support Windows!
 #endif
 
+
+#ifdef HADES_ENABLE_ASSERTS
+	#define HADES_ASSERT(x, ...) { if(!(x)) { HADES_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); }}
+	#define HADES_CORE_ASSERT(x, ...) { if(!(x)) { HADES_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); }}
+#else
+	#define HADES_ASSERT(x, ...)
+	#define HADES_CORE_ASSERT(x, ...)
+#endif
+
 #define BIT(x) (1 << x)

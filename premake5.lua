@@ -10,6 +10,11 @@ workspace "Hades"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}"
 
+IncludeDir = {}
+IncludeDir["GLFW"] = "Hades/vendor/GLFW/include"
+
+include "Hades/vendor/GLFW"
+
 project "Hades"
 	location "Hades"
 	kind "SharedLib"
@@ -30,7 +35,14 @@ project "Hades"
 	includedirs
 	{
 		"%{prj.name}/src",
-		"%{prj.name}/vendor/spdlog/include"
+		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDir.GLFW}"
+	}
+
+	links
+	{
+		"GLFW",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"
@@ -51,16 +63,18 @@ project "Hades"
 
 	filter "configurations:Debug"
 		defines "HADES_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "HADES_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "HADES_DIST"
+		buildoptions "/MD"
 		optimize "On"
-
 
 project "Game"
 	location "Game"
@@ -98,13 +112,16 @@ project "Game"
 
 	filter "configurations:Debug"
 		defines "HADES_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "HADES_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "HADES_DIST"
+		buildoptions "/MD"
 		optimize "On"
 
