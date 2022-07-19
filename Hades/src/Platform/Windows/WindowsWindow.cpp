@@ -5,6 +5,8 @@
 #include "Hades/Events/KeyEvent.h"
 #include "Hades/Events/MouseEvent.h"
 
+#include <glad/glad.h>
+
 namespace Hades {
 
 	static bool s_GLFWInitialized = false;
@@ -70,6 +72,8 @@ namespace Hades {
 
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
 		glfwMakeContextCurrent(m_Window);
+		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+		HADES_CORE_ASSERT(status, "Failed to initialized Glad!");
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
 
@@ -99,7 +103,7 @@ namespace Hades {
 				{
 				case GLFW_PRESS:
 				{
-					KeyPressedEvent event(key, 0);
+					KeyPressedEvent event(key, scancode, mods , 0);
 					data.EventCallback(event);
 					break;
 				}
@@ -111,13 +115,20 @@ namespace Hades {
 				}
 				case GLFW_REPEAT:
 				{
-					KeyPressedEvent event(key, 1);
+					KeyPressedEvent event(key, scancode, mods, 1);
 					data.EventCallback(event);
 					break;
 				}
 				default:
 					break;
 				}
+			});
+
+		glfwSetCharCallback(m_Window, [](GLFWwindow* window, unsigned int keycode)
+			{
+				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+				KeyTypedEvent event(keycode);
+				data.EventCallback(event);
 			});
 
 		glfwSetMouseButtonCallback(m_Window, [](GLFWwindow* window, int button, int action, int mods)

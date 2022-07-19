@@ -12,8 +12,12 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}"
 
 IncludeDir = {}
 IncludeDir["GLFW"] = "Hades/vendor/GLFW/include"
+IncludeDir["Glad"] = "Hades/vendor/Glad/include"
+IncludeDir["imgui"] = "Hades/vendor/imgui"
 
 include "Hades/vendor/GLFW"
+include "Hades/vendor/Glad"
+include "Hades/vendor/imgui"
 
 project "Hades"
 	location "Hades"
@@ -36,12 +40,16 @@ project "Hades"
 	{
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}",
+		"%{IncludeDir.imgui}",
 	}
 
 	links
 	{
+		"Glad",
 		"GLFW",
+		"imgui",
 		"opengl32.lib"
 	}
 
@@ -53,7 +61,8 @@ project "Hades"
 		defines
 		{
 			"HADES_PLATFORM_WINDOWS",
-			"HADES_BUILD_DLL"
+			"HADES_BUILD_DLL",
+			"GLFW_INCLUDE_NONE"
 		}
 
 		postbuildcommands

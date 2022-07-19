@@ -4,3 +4,6 @@
 [submodule "Hades/vendor/GLFW"]
 	path = Hades/vendor/GLFW
 	url = https://github.com/Manipu1a/glfw
+[submodule "Hades/vendor/imgui"]
+	path = Hades/vendor/imgui
+	url = https://github.com/Manipu1a/imgui.git

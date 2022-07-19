@@ -31,7 +31,8 @@ class Sandbox : public Hades::Application
 public:
 	Sandbox()
 	{
-		PushLayer(new ExampleLayer());
+		//PushLayer(new ExampleLayer());
+		PushOverlay(new Hades::ImGuiLayer());
 	}
 
 	~Sandbox()
