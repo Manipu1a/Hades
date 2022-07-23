@@ -1,4 +1,5 @@
 workspace "Hades"
+	startproject "Game"
 	architecture "x64"
 
 	configurations
@@ -14,6 +15,7 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "Hades/vendor/GLFW/include"
 IncludeDir["Glad"] = "Hades/vendor/Glad/include"
 IncludeDir["imgui"] = "Hades/vendor/imgui"
+IncludeDir["glm"] = "Hades/vendor/glm"
 
 include "Hades/vendor/GLFW"
 include "Hades/vendor/Glad"
@@ -22,6 +24,7 @@ include "Hades/vendor/imgui"
 project "Hades"
 	location "Hades"
 	kind "SharedLib"
+	staticruntime "off"
 	language "C++"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
@@ -33,7 +36,9 @@ project "Hades"
 	files
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/glm/glm/**.hpp",
+		"%{prj.name}/vendor/glm/glm/**.inl"
 	}
 
 	includedirs
@@ -43,6 +48,7 @@ project "Hades"
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.imgui}",
+		"%{IncludeDir.glm}"
 	}
 
 	links
@@ -55,7 +61,6 @@ project "Hades"
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines
@@ -67,27 +72,28 @@ project "Hades"
 
 		postbuildcommands
 		{
-			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Game")
+			("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Game/\"")
 		}
 
 	filter "configurations:Debug"
 		defines "HADES_DEBUG"
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "HADES_RELEASE"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "HADES_DIST"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 project "Game"
 	location "Game"
 	kind "ConsoleApp"
+	staticruntime "off"
 	language "C++"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
@@ -96,13 +102,15 @@ project "Game"
 	files
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
+
 	}
 
 	includedirs
 	{
 		"Hades/vendor/spdlog/include",
-		"Hades/src"
+		"Hades/src",
+		"%{IncludeDir.glm}"
 	}
 
 	links
@@ -111,7 +119,6 @@ project "Game"
 	}
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines
@@ -121,16 +128,16 @@ project "Game"
 
 	filter "configurations:Debug"
 		defines "HADES_DEBUG"
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "HADES_RELEASE"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "HADES_DIST"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 

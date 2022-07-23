@@ -38,3 +38,7 @@ bin-int/*
 *.user
 *.db
 *.suo
+*.pdb
+*.log
+
+
